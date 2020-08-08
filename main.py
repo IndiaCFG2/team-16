@@ -1,9 +1,9 @@
 from flask import Flask,request 
-from insert import insert_transaction_data,insert_ngo_data
+from insert import insert_transaction_data,insert_ngo_data,update_transaction_data,show_transaction_data,show_request_data
 app = Flask(__name__)
 
 
-@app.route('/insertRequest',method=['POST'])
+@app.route('/insertRequest',methods=['POST'])
 def insertRequest():    
     output = request.json        
     try:
@@ -13,7 +13,7 @@ def insertRequest():
         return {'result':'Failed'}
     
     
-@app.route('/insertNGOData',method=['POST'])
+@app.route('/insertNGOData',methods=['POST'])
 def insertNGOData():    
     output = request.json        
     try:
@@ -22,33 +22,31 @@ def insertNGOData():
     except:
         return {'result':'Failed'}
         
-@app.route('/updateTransactionData',method=['POST'])
-def update_transaction_data():    
+@app.route('/updateTransactionData',methods=['POST'])
+def updateTransactionData():    
     output = request.json        
     try:
-        insert_ngo_data(output)
+        update_transaction_data(output)
         return {'result':'Successfully Inserted'}
     except:
         return {'result':'Failed'}
         
 
-@app.route('/showUserTransactionData',method=['POST'])
-def show_transaction_data():    
+@app.route('/showUserTransactionData',methods=['POST'])
+def showUserTransactionData():    
     output = request.json        
     try:
-        insert_ngo_data(output)
-        return {'result':'Successfully Inserted'}
+        return show_transaction_data(output)
     except:
         return {'result':'Failed'}
     
 
     
-@app.route('/showUserRequestData',method=['POST'])
-def show_request_data():    
+@app.route('/showUserRequestData',methods=['POST'])
+def showUserRequestData():    
     output = request.json        
     try:
-        insert_ngo_data(output)
-        return {'result':'Successfully Inserted'}
+        return show_request_data(output)
     except:
         return {'result':'Failed'}
         

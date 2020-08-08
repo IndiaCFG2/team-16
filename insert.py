@@ -33,15 +33,15 @@ def insert_transaction_data(obj):
    insert_val['REQUEST_GENERATION_TIME'] = datetime.now()
    collection.insert_one(insert_val)
    collection = db.ngo_request
-   output_val = collection.find({'request_id' : obj['request_id']})
-   val = output_val['quantities']
+   output_val = collection.find({'REQUEST_ID' : obj['REQUEST_ID']})
+   val = output_val['QUANTITIES']
    if(val> obj['ITEMS']):
        val = val - obj['ITEMS']
-       return {'resut' : 'success'}
+       return {'result' : 'success'}
    elif(val == obj['ITEMS'] or val < obj['ITEMS']):
        collection.aggregate([{
-               '$match' : {'request_id' : obj['request_id']},
-               '$set' : {'status' : 'completed'}             
+               '$match' : {'REQUEST_ID' : obj['REQUEST_ID']},
+               '$set' : {'STATUS' : 'completed'}             
        }])
    if val<obj['ITEMS']:
        return {'result' : 'demand already fulfilled, try for different request'}
@@ -56,14 +56,14 @@ def insert_ngo_data(obj):
    collection = db.ngo_request
    count = collection.count()
    insert_data = {}
-   insert_data['request_id'] = count+1
-   insert_data['Ngo_name'] = obj['Ngo_name']
-   insert_data['product_type'] = obj['product_type']
-   insert_data['product_sub_type'] = obj['product_sub_type']
-   insert_data['quantities']  = obj['quantities']
-   insert_data['desc'] = obj['desc']
-   insert_data['status'] = 'created'
-   insert_data['location'] = obj['location']
+   insert_data['REQUEST_ID'] = count+1
+   insert_data['NGO_NAME'] = obj['NGO_NAME']
+   insert_data['PRODUCT_TYPE'] = obj['PRODUCT_TYPE']
+   insert_data['PRODUCT_SUB_TYPE'] = obj['PRODUCT_SUB_TYPE']
+   insert_data['QUANTITIES']  = obj['QUANTITIES']
+   insert_data['DESC'] = obj['DESC']
+   insert_data['STATUS'] = 'created'
+   insert_data['LOCATION'] = obj['LOCATION']
    
 def show_transaction_data(obj):
     collection = db.requests
@@ -80,7 +80,7 @@ def show_request_data(obj):
     collection = db.ngo_request
     try:
         output = collection.aggregate([{
-                '$match'  : {'$or' : [{'status' : 'created'},{'status':'intransit'}]}
+                '$match'  : {'$or' : [{'STATUS' : 'created'},{'STATUS':'intransit'}]}
                 }])
     
         return output
