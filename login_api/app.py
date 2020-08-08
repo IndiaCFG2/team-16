@@ -27,9 +27,9 @@ from user import routes
 
 @app.route('/')
 def home():
-  return render_template('ngoregistration.html')
+  return render_template('home.html')
 
-@app.route('/ngoreg')
+@app.route('/ngoreg/')
 def ngoreg():
   return render_template('ngoregistration.html')
 
