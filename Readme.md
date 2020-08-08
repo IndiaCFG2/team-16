@@ -1,2 +1,2 @@
-### Team 16 - Code For Good 2020
+## Team 16 - Code For Good 2020
 
