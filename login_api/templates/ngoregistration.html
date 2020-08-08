@@ -1,67 +1,232 @@
-{% extends "base.html" %}
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="A2.css">
-</head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<style>
+
+    body{
+            background-color: #F5F5F5;
+        };
+ 
+</style>
 <body> 
-    <center><h1>NGO REGISTRATION</h1></center>
-    <div class="container">
-        <div class="jumbotron mt-3">
-            <form>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+    
+    <div class="container" style="background-color: white; width: 80%; margin-top: 20px; margin-bottom: 20px;">
+
+      <center><h2>NGO REGISTRATION</h2></center>
+        
+            <form method="POST" enctype='multipart/form-data'>
 			    <div class="form-group">
-                  <label for="exampleFormControlInput1">NGO name</label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ngo name">
+                  <label for="ngo_name">NGO name</label>
+                  <input type="text" class="form-control" id="ngo_name" placeholder="Ngo name">
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Email address</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email id">
+                  <label for="ngo_email_address">Email address</label>
+                  <input type="email" class="form-control" id="ngo_email_address" placeholder="Email id">
                 </div>
 				<div class="form-group">
-                  <label for="exampleFormControlInput1">Password</label>
-                  <input type="Password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
 				<div class="form-group">
-                  <label for="exampleFormControlInput1">Phone no</label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Phone no">
+                  <label for="phone">Phone no</label>
+                  <input type="number" class="form-control" id="phone" placeholder="Phone no">
+                </div>
+                <div class="form-group">
+                  <label for="adr_line_1">Address Line 1</label>
+                  <input type="text" class="form-control" id="adr_line_1" placeholder="Address Line 1">
+                </div>
+                <div class="form-group">
+                  <label for="adr_line_2">Address Line 2</label>
+                  <input type="text" class="form-control" id="adr_line_2" placeholder="Address Line 2">
                 </div>
 				 <div class="form-group">
-                  <label for="exampleFormControlInput1">City</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="City">
+                  <label for="city">City</label>
+                  <input type="email" class="form-control" id="city" placeholder="City">
                 </div>
 				<div class="form-group">
-			<form >
-			  <label for="exampleFormControlInput1">File</label>
-              <input type="file" id="myFile" name="filename">
-               </form>
+			<div class="form-group">
+			  <label for="file">Choose your FCRA Certificate</label>
+              <input type="file" id="file" name="filename">
 			   </div>
                 <div class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="pitch" >Pitch</label>
+                    <textarea class="form-control" id="pitch" rows="3"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="text-center">
+
+                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <span class="error" style="font-size: 12px; color: red;"></span>
+                
+
+
+              </div>
+              <br>
         
               </form>
          
-        </div>
+        
 
     </div>
 
-    
 
- <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+
+$("#submit").click(function(e){
+  e.preventDefault();
+
+  $(".error").html("");
+
+  var ngo_name = $("#ngo_name").val().trim();
+  var ngo_email_address = $("#ngo_email_address").val().trim();
+  var password = $("#password").val().trim();
+  var phone = $("#phone").val();
+  var adr_line_1 = $("#adr_line_1").val().trim();
+  var adr_line_2 = $("#adr_line_2").val().trim();
+  var pitch = $("#pitch").val();
+  var file_data = $('input[type="file"]')[0].files;
+
+  console.log(file_data);
+
+  //alert(ngo_name+" "+ngo_email_address+" "+password+" "+phone+" "+adr_line_1+" "+adr_line_2+" "+pitch);
+
+  error = 0 ;
+  error_string = "";
+
+  if(ngo_name == ""){
+    error = 1 ;
+    error_string += "NGO Name is empty<br>";
+  }
+
+  if(ngo_email_address == ""){
+    error = 1 ;
+    error_string += "NGO Email Address is empty<br>";
+  }
+
+  if(password == ""){
+    error = 1 ;
+    error_string += "Password is empty<br>";
+  }
+
+  if(phone.length != 10){
+    error = 1 ;
+    error_string += "Please enter a valid 10 digit mobile number<br>";
+  }
+
+  if(adr_line_1 == ""){
+    error = 1 ;
+    error_string += "Address Line 1 should be filled<br>";
+  }
+
+
+  if(pitch == ""){
+    error = 1 ;
+    error_string += "Your Pitch  is empty<br>";
+  }
+
+  if(file_data[0]==undefined){
+  error = 1;
+  error_string += "Please select a FCRA Certificate!<br>";
+}else{
+  var file_type = file_data[0]["type"];
+  if(file_type.substring(0,5)!="appli"){
+    error = 1;
+  error_string += "Please upload a document!<br>";
+  }
+}
+
+  if(error==1){
+    $(".error").html(error_string);
+  }else{
+    // ajax 
+
+  //   var ngo_name = $("#ngo_name").val().trim();
+  // var ngo_email_address = $("#ngo_email_address").val().trim();
+  // var password = $("#password").val().trim();
+  // var phone = $("#phone").val();
+  // var adr_line_1 = $("#adr_line_1").val().trim();
+  // var adr_line_2 = $("#adr_line_2").val().trim();
+  // var pitch = $("#pitch").val();
+  // var file_data = $('input[type="file"]')[0].files;
+
+    $.ajax({
+      // flask function you want to call
+          url: 'addProduct.php',
+          type: 'POST',
+          data: {
+            "ngo_name":ngo_name,
+            "ngo_email_address":ngo_email_address,
+            "password":password,
+            "phone":phone,
+            "adr_line_1":adr_line_1,
+            "adr_line_2":adr_line_2,
+            "file" : file_data[0]
+          },
+          async: false,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function () {
+              alert('Form Submitted!');
+          },
+          error: function(){
+              alert("error in ajax form submission");
+          }
+      });
+
+  }
+
+
+})
+
+</script>
    
 </body>
 </html>
