@@ -11,6 +11,9 @@ def update_transaction_data(obj):
             '$set' : {'TRACKING_STATUS' : obj['TRACKING_STATUS']}
             }])    
 
+    
+    
+    
 
 def insert_transaction_data(obj):
    collection = db.requests 
